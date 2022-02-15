@@ -10,11 +10,10 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 
-class ExampleAdapter internal constructor(val context: Context) :
+class ExampleAdapter internal constructor() :
     RecyclerView.Adapter<ExampleAdapter.ViewHolder>() {
     val TAG = this::class.java.simpleName
 
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
     private val examples = listOf(0, 1, 2, 3, 4)
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,7 +23,7 @@ class ExampleAdapter internal constructor(val context: Context) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int)
             : ViewHolder {
-        val itemView = inflater.inflate(R.layout.item_example, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_example, parent, false)
 
         return ViewHolder(itemView)
     }

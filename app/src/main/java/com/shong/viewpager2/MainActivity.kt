@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val viewPager2 = findViewById<ViewPager2>(R.id.viewPager2)
-        val exampleAdapter = ExampleAdapter(this@MainActivity)
+        val exampleAdapter = ExampleAdapter()
         viewPager2.run{
             adapter = exampleAdapter
 
