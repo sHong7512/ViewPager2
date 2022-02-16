@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
-import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     val TAG = this::class.java.simpleName+"_sHong"
@@ -25,11 +24,11 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
-            val pageMargin = resources.getDimensionPixelOffset(R.dimen.page_margin).toFloat()
+            val pageMargin = resources.getDimensionPixelOffset(R.dimen.page_submargin).toFloat()
             val pageOffset = resources.getDimensionPixelOffset(R.dimen.pager_offset).toFloat()
 
             setPageTransformer { page, position ->
-                val myOffset: Float = position * -(2 * pageOffset + pageMargin)
+                val myOffset: Float = position * -(2 * pageOffset - pageMargin)
                 if (position < -1) {
                     page.translationX = -myOffset
                 } else if (position <= 1) {
@@ -38,9 +37,9 @@ class MainActivity : AppCompatActivity() {
                     page.scaleY = scaleFactor
                 }
             }
+            getChildAt(0).setPadding(1, 0, 1, 0)
         }
-        val rv = viewPager2.getChildAt(0)
-        rv.setPadding(80, 0, 80, 0)
+
     }
 
 }
